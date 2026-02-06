@@ -30,8 +30,14 @@ public class Test {
 	    if(alberto.cat == Categoria.ESPECIALISTA) {
 	    	System.out.println("La categoria de Alberto es Especialista");
 	    }
-	    
+	
+	    Pacient pacient1 = new Pacient("pepe", 10, 24, Gravetat.LLEU);
+	    Pacient pacient2 = new Pacient("jose", 15, 20, Gravetat.LLEU);
 
+	    faustino.afegirPacient(pacient1);
+	    faustino.afegirPacient(pacient2);
+	    
+	    faustino.veurePacients();
 	}
 
 }

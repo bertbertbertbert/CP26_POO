@@ -1,5 +1,7 @@
 package hospital;
 
+import java.util.ArrayList;
+
 public class Metge {
 	
 	String nom;
@@ -8,7 +10,7 @@ public class Metge {
 	double souInicial;
 	double sou;
 	static Categoria cat;
-	
+	public ArrayList<Pacient> pacientsAssingnats = new ArrayList<Pacient>();
 	public Metge() {}
 	
 	public Metge(String nom, Categoria cat) {
@@ -46,6 +48,34 @@ public class Metge {
 		this.sou *= 1.02;
 		if(this.sou%6==0){
 			this.sou *= 1.05;
+		}
+	}
+	
+	public void afegirPacient(Pacient pac) {
+		pacientsAssingnats.add(pac);
+	}
+	
+	public boolean consulta(Pacient pac) {
+		double preu = 10;
+		if(cat == Categoria.RESIDENT) {
+			preu *= 2;
+		}else if(cat == Categoria.ESPECIALISTA) {
+			preu*= 3;
+		}
+		if(pac.edat < 15 || pac.gravetat == Gravetat.CRITICA) {
+			preu = 0;
+		}
+		if(pac.diners >= preu) {
+			pacientsAssingnats.add(pac);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public void veurePacients() {
+		for(Pacient p : pacientsAssingnats) {
+			System.out.println(p.nom);
 		}
 	}
 	
