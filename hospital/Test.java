@@ -22,7 +22,7 @@ public class Test {
 		System.out.println(faustino.sou);
 		Metge perDefecte = new Metge();
 	    System.out.println(perDefecte.nom);
-	    Metge house = new Metge("House");
+	    Metge house = new Metge("House", Categoria.INTERN);
 	    System.out.println(house.nom+" "+house.sou);
 	    Metge wilson = new Metge("Wilson", 10);  
 	    System.out.println(wilson.nom+" "+wilson.anysTreballats);

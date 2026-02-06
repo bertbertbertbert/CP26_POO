@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="arrayInici/|inventari/|inventari_/" kind="src" path=""/>
+	<classpathentry kind="src" path="arrayInici"/>
+	<classpathentry kind="src" path="inventari"/>
+	<classpathentry kind="src" path="inventari_"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
