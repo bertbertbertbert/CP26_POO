@@ -1,4 +1,4 @@
-package inventari;
+package probes;
 
 import java.util.Scanner;
 

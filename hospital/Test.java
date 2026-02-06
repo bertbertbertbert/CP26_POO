@@ -26,6 +26,12 @@ public class Test {
 	    System.out.println(house.nom+" "+house.sou);
 	    Metge wilson = new Metge("Wilson", 10);  
 	    System.out.println(wilson.nom+" "+wilson.anysTreballats);
+	    Metge alberto = new Metge("Alberto", Categoria.ESPECIALISTA);
+	    if(alberto.cat == Categoria.ESPECIALISTA) {
+	    	System.out.println("La categoria de Alberto es Especialista");
+	    }
+	    
+
 	}
 
 }

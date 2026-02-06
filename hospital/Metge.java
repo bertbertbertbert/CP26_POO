@@ -7,7 +7,7 @@ public class Metge {
 	int anysTreballats;
 	double souInicial;
 	double sou;
-	Categoria cat;
+	static Categoria cat;
 	
 	public Metge() {}
 	
@@ -26,7 +26,7 @@ public class Metge {
 	}
 	
 	public Metge(String nom, int anysTreballats, String departament) {
-		this(nom);
+		this(nom, cat);
 		for(int i = 0; i < anysTreballats; i++) {
 			this.augmentarAnys();
 		}
