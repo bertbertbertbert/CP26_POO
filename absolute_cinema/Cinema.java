@@ -13,7 +13,7 @@ public class Cinema {
 		boolean sortir = false;
 		while(!sortir) {
 			
-			System.out.println("1.Afegir película");
+			System.out.println("1.Afegir película.");
 			System.out.println("2.Crear Sessió");
 			System.out.println("3.Vendre Entrades");
 			System.out.println("4.Mostrar Sessions d'una Película");
