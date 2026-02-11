@@ -35,8 +35,6 @@ public Pacient(String nom, double diners, int edat, Gravetat gravetat) {
 public Pacient(String nom, int edat) {
 	 this(nom, 0.0, edat, Gravetat.LLEU);
 	this.nom = nom; this.edat = edat;
-	this.diners = 0;
-	this.gravetat = Gravetat.LLEU;
 }
 
 
