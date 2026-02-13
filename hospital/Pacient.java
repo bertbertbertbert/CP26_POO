@@ -3,10 +3,10 @@ package hospital;
 
 
 public class Pacient {
-String nom;
-double diners;
-int edat;
-Gravetat gravetat;
+public String nom;
+public double diners;
+public int edat;
+public Gravetat gravetat;
 Planta planta;
 
 

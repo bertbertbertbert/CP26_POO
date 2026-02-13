@@ -1,5 +1,8 @@
 package hospital2;
 
+import hospital3.Pacient;
+import hospital3.PacientHospitalitzat;
+
 public class test {
 
 	public static void main (String[] args) {
@@ -8,8 +11,18 @@ public class test {
 		PacientHospitalitzat montse = new PacientHospitalitzat(alberto.nom, alberto.edat, "Millorant");		
 		System.out.println("Nom "+ montse.nom+ " edat " + montse.edat + " estat " + montse.tractamentActual);
 
-		PacientHospitalitzat.hospitaliztar(alberto, "Dar mucha sopita");
+		PacientHospitalitzat(alberto, "Dar mucha sopita");
  
 	}
 	
+
+	private static PacientHospitalitzat PacientHospitalitzat(Pacient alberto, String tractament) {
+		if(!(alberto instanceof PacientHospitalitzat)) {
+		new PacientHospitalitzat(alberto.nom, alberto.edat, tractament);
+		}else {
+			System.out.println("Aquest pacient ja està hospitalitzat");
+			
+		}
+		return (PacientHospitalitzat) alberto;
+	}
 }
