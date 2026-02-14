@@ -1,4 +1,4 @@
-package hospital3;
+package hospital4;
 
 public class test {
 
@@ -7,13 +7,13 @@ public class test {
 		Pacient alberto = new Pacient("Alberto", 39);
 		Pacient marc = new Pacient("Marc",30);
         
-        marc.hospitaliztar("sopita");
-		pacientHospitalitzatStatic(alberto, "aguita");
+       /*  marc.hospitaliztar(new Tractament("observació"));
+		pacientHospitalitzatStatic(alberto, new Tractament("observació")); */
        
 		 PacientHospitalitzat.veureHopsitalitzats();
 	}
 
-	private static PacientHospitalitzat pacientHospitalitzatStatic(Pacient p, String tractament) {
+	private static PacientHospitalitzat pacientHospitalitzatStatic(Pacient p, Tractament tractament) {
 		if(!(p instanceof PacientHospitalitzat)) {
 		return new PacientHospitalitzat(p.getNom(), p.getEdat(), tractament);
 		}else {
