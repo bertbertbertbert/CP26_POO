@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import hospital.Categoria;
 import hospital.Gravetat;
-import hospital.Pacient;
 
 public class Metge extends Persona {
 
@@ -13,6 +12,7 @@ public class Metge extends Persona {
 	private double souInicial;
 	private double sou;
 	private Categoria cat;
+	private ArrayList<Pacient> pacientsAssingnats = new ArrayList<Pacient>();
 
 	public String getDepartament() {
 		return departament;
@@ -43,8 +43,6 @@ public class Metge extends Persona {
 
 	}
 
-	private ArrayList<Pacient> pacientsAssingnats = new ArrayList<Pacient>();
-
 	public Metge() {
 	};
 
@@ -70,11 +68,12 @@ public class Metge extends Persona {
 		this.departament = departament;
 	}
 
-	public Metge(String nom, String departament, double souInicial, int anysTreballats) {
+	public Metge(String nom, String departament, double sou, int anysTreballats, Categoria cat) {
 		this.nom = nom;
 		this.departament = departament;
-		this.souInicial = souInicial;
+		this.sou = sou;
 		this.anysTreballats = anysTreballats;
+		this.cat = cat;
 	}
 
 	public void augmentarAnys() {
@@ -103,21 +102,13 @@ public class Metge extends Persona {
 		return preuFinal;
 	}
 
-@Override
-public String toString() {
-	return "Metge [nom=" + getNom() +
-		   ", departament=" + getDepartament() +
-		   ", anysTreballats=" + getAnysTreballats() +
-		   ", sou=" + getSou() +
-		   ", categoria=" + getCat() +
-		   "]";
-}
-
 	public boolean consulta(Pacient pac) {
-		double preuFinal = calcularPreuConsulta(pac.edat, pac.gravetat, this.cat);
-		if (pac.diners >= preuFinal) {
-			pac.diners -= preuFinal;
+		double preuFinal = calcularPreuConsulta(pac.getEdat(), pac.getGravetat(), this.cat);
+		if (pac.getDiners() >= preuFinal) {	
+			pac.setDiners(pac.getDiners() - preuFinal);
 			afegirPacient(pac);
+			System.out.println("Nom pacient " + pac.nom + " Nom Metge " + this.getNom() + " Preu consulta " + preuFinal + 
+			" Gravetat pacient " + pac.getGravetat() + " diners pacient " + pac.getDiners());
 			return true;
 		} else {
 			return false;
@@ -129,4 +120,15 @@ public String toString() {
 			System.out.println(p.nom);
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Metge [nom=" + getNom() +
+				", departament=" + getDepartament() +
+				", anysTreballats=" + getAnysTreballats() +
+				", sou=" + getSou() +
+				", categoria=" + getCat() +
+				"]";
+	}
+
 }

@@ -5,14 +5,6 @@ import hospital.Gravetat;
 import hospital.Planta;
 
 public class Pacient extends Persona {
-	@Override
-	public String toString() {
-		return "Pacient [nom=" + this.getNom() +
-				", diners=" + this.getDiners() +
-				", edat=" + this.getEdat() +
-				", gravetat=" + this.getGravetat() +
-				", planta=" + this.getPlanta() + "]";
-	}
 
 	private double diners;
 	private int edat;
@@ -74,11 +66,28 @@ public class Pacient extends Persona {
 
 	}
 
-	public Pacient(String nom, int edat, Gravetat gravetat, Planta planta) {
+	public Pacient(String nom, int edat, double diners, Gravetat gravetat) {
 		super(nom);
-		this.edat = edat;
+		this.diners = diners;
 		this.gravetat = gravetat;
-		this.planta = planta;
+
+		if (edat < 0) {
+			this.edat = 0;
+		} else if (edat > 150) {
+			this.edat = 150;
+		} else {
+			this.edat = edat;
+		}
+
+		if (edat <= 1) {
+			this.planta = Planta.NEONATAL;
+		} else if (edat > 1 && edat <= 18) {
+			this.planta = Planta.PEDIATRIA;
+		} else if (edat > 18 && edat <= 74) {
+			this.planta = Planta.GENERAL;
+		} else {
+			this.planta = Planta.GERIATRIA;
+		}
 	}
 
 	private int gravetatANum(Gravetat gravetat) {
@@ -118,13 +127,23 @@ public class Pacient extends Persona {
 		}
 	}
 
-	public PacientHospitalitzat hospitaliztar(Tractament tractament) {
+	public PacientHospitalitzat hospitaliztar(Diagnosti diagnosti, Tractament tractament) {
 		if (!(this instanceof PacientHospitalitzat)) {
-			return new PacientHospitalitzat(getNom(), getEdat(), tractament);
+			return new PacientHospitalitzat(this, diagnosti, tractament);
 		} else {
 			System.out.println("Aquest pacient ja està hospitalitzat");
 
 		}
 		return (PacientHospitalitzat) this;
 	}
+
+		@Override
+	public String toString() {
+		return "Pacient [nom=" + this.getNom() +
+				", diners=" + this.getDiners() +
+				", edat=" + this.getEdat() +
+				", gravetat=" + this.getGravetat() +
+				", planta=" + this.getPlanta() + "]";
+	}
+
 }
