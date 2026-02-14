@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import hospital.Gravetat;
 
 public class Pacient extends Persona {
-	double sou;
-	int anysTreballats;
 	int edat;
 	Gravetat gravetat;
 	int gravetatPacient;
@@ -13,8 +11,6 @@ public class Pacient extends Persona {
 	public Pacient(String nom, int edat) {
 		super(nom);
 		this.edat = edat;
-		this.sou = 1000;
-		this.anysTreballats = 0;
 	}
 
 	public Pacient(String nom, int edat, Gravetat gravetat) {
@@ -23,7 +19,7 @@ public class Pacient extends Persona {
 		this.gravetat = gravetat;
 	}
 	
-	private int gravetatANum(Gravetat gravetat){
+	private int gravetatANum(){
 		gravetat = this.gravetat;
 		
 		if(this.gravetat == Gravetat.LLEU) {
@@ -42,7 +38,7 @@ public class Pacient extends Persona {
 		simptomes.add(s);
 		
 		//cridem a la funcio que ens dona el numero de la gravetat del pacient per comparar amb la gravetat del simptoma
-		gravetatPacient = gravetatANum(this.gravetat);
+		gravetatPacient = gravetatANum();
 		int tipusGravetatSimptoma = 0;
 		if(s.gravetat == Gravetat.LLEU) {
 			tipusGravetatSimptoma = 1;
@@ -61,7 +57,7 @@ public class Pacient extends Persona {
 	
 	public PacientHospitalitzat hospitaliztar(String tractament) {
 		if(!(this instanceof PacientHospitalitzat)) {
-		new PacientHospitalitzat(this.nom, this.edat, tractament);
+		return new PacientHospitalitzat(this.nom, this.edat, tractament);
 		}else {
 			System.out.println("Aquest pacient ja està hospitalitzat");
 			
