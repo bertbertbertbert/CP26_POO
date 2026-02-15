@@ -35,8 +35,9 @@ public class Metge extends Persona {
 	}
 
 	public void setCat(Categoria cat) {
-		if ((this.cat == Categoria.RESIDENT || this.cat == Categoria.ESPECIALISTA) && cat == Categoria.INTERN) {
-			System.out.println("Un resident o especialista no pot pasar a ser intern");
+		if (((this.cat == Categoria.RESIDENT || this.cat == Categoria.ESPECIALISTA) && cat == Categoria.INTERN) 
+			|| (this.anysTreballats > 2 && cat == Categoria.INTERN)) {
+			System.out.println("Un resident, especialista o treballador amb >2 anys treballats no pot pasar a ser intern");
 		} else {
 			this.cat = cat;
 		}
@@ -71,29 +72,33 @@ public class Metge extends Persona {
 	}
 
 	public Metge(String nom, String departament, double souInicial, int anysTreballats) {
-		this.nom = nom;
+		super(nom);
 		this.departament = departament;
 		this.souInicial = souInicial;
 		this.anysTreballats = anysTreballats;
 	}
 
+	private void actualitzarSou() {
+    this.sou *= 1.02;
+    if (this.anysTreballats % 6 == 0) {
+        this.sou *= 1.05;
+    }
+}
+
 	public void augmentarAnys() {
 		this.anysTreballats++;
-		this.sou *= 1.02;
-		if (this.anysTreballats % 6 == 0) {
-			this.sou *= 1.05;
-		}
+        actualitzarSou();
 	}
 
 	public void afegirPacient(Pacient pac) {
 		pacientsAssingnats.add(pac);
 	}
 
-	public double calcularPreuConsulta(int edat, Gravetat gravetat, Categoria categoria) {
+	public static double calcularPreuConsulta(int edat, Gravetat gravetat, Categoria categoria) {
 		double preuBase = 10;
-		if (cat == Categoria.RESIDENT) {
+		if (categoria == Categoria.RESIDENT) {
 			preuBase *= 2;
-		} else if (cat == Categoria.ESPECIALISTA) {
+		} else if (categoria == Categoria.ESPECIALISTA) {
 			preuBase *= 3;
 		}
 		if (edat < 15 || gravetat == Gravetat.CRITICA) {
@@ -102,16 +107,6 @@ public class Metge extends Persona {
 		double preuFinal = preuBase;
 		return preuFinal;
 	}
-
-@Override
-public String toString() {
-	return "Metge [nom=" + getNom() +
-		   ", departament=" + getDepartament() +
-		   ", anysTreballats=" + getAnysTreballats() +
-		   ", sou=" + getSou() +
-		   ", categoria=" + getCat() +
-		   "]";
-}
 
 	public boolean consulta(Pacient pac) {
 		double preuFinal = calcularPreuConsulta(pac.edat, pac.gravetat, this.cat);
@@ -129,4 +124,14 @@ public String toString() {
 			System.out.println(p.nom);
 		}
 	}
+
+	@Override
+    public String toString() {
+	return "Metge [nom=" + getNom() +
+		   ", departament=" + getDepartament() +
+		   ", anysTreballats=" + getAnysTreballats() +
+		   ", sou=" + getSou() +
+		   ", categoria=" + getCat() +
+		   "]";
+}
 }

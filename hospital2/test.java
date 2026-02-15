@@ -13,10 +13,10 @@ public class test {
        
 	}
 	
-
 	private static PacientHospitalitzat pacientHospitalitzatStatic(Pacient p, String tractament) {
 		if(!(p instanceof PacientHospitalitzat)) {
-		return new PacientHospitalitzat(p.nom, p.edat, tractament);
+		 PacientHospitalitzat ph = p.hospitaliztar(tractament);
+		 return ph;
 		}else {
 			System.out.println("Aquest pacient ja està hospitalitzat");
 			

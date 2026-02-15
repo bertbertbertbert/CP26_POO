@@ -3,16 +3,7 @@ package hospital3;
 import java.util.ArrayList;
 
 public class PacientHospitalitzat extends Pacient {
-	@Override
-	public String toString() {
-		return "Pacient [nom=" + this.getNom() +
-				", diners=" + this.getDiners() +
-				", edat=" + this.getEdat() +
-				", gravetat=" + this.getGravetat() +
-				", planta=" + this.getPlanta() +
-				", tractament Actual=" + this.getTractamentActual() +
-				", dies hopsitalitzat =" + this.getDiesHospitalitzat() + "]";
-	}
+
 
 	public String tractamentActual;
 	private int diesHospitalitzat;
@@ -44,22 +35,33 @@ public class PacientHospitalitzat extends Pacient {
 		nombrePacientsHospitalitzats++;
 	}
 
-	public PacientHospitalitzat(String nom, int edat, String tractamentActual) {
-		super(nom, edat);
+	public PacientHospitalitzat(Pacient p, String tractamentActual) {
+		super(p.getNom(), p.getEdat());
 		this.tractamentActual = tractamentActual;
 		nombrePacientsHospitalitzats++;
 		hospitalitzats.add(this);
 	}
 
-	public void afegirSimptoma(Simptoma s, int diesHospital) {
+	public void afegirSimptoma(Simptoma s) {
 		super.afegirSimptoma(s);
-		this.diesHospitalitzat = diesHospital;
+		this.diesHospitalitzat++;
 	}
 
 	public static void veureHopsitalitzats() {
 		for (PacientHospitalitzat pacient : hospitalitzats) {
 			System.out.println("nom " + pacient.getNom() + " edad " + pacient.getEdat());
 		}
+	}
+
+		@Override
+	public String toString() {
+		return "Pacient [nom=" + this.getNom() +
+				", diners=" + this.getDiners() +
+				", edat=" + this.getEdat() +
+				", gravetat=" + this.getGravetat() +
+				", planta=" + this.getPlanta() +
+				", tractament Actual=" + this.getTractamentActual() +
+				", dies hopsitalitzat =" + this.getDiesHospitalitzat() + "]";
 	}
 
 }

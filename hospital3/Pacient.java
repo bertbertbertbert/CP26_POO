@@ -5,14 +5,6 @@ import hospital.Gravetat;
 import hospital.Planta;
 
 public class Pacient extends Persona {
-	@Override
-	public String toString() {
-		return "Pacient [nom=" + this.getNom() +
-				", diners=" + this.getDiners() +
-				", edat=" + this.getEdat() +
-				", gravetat=" + this.getGravetat() +
-				", planta=" + this.getPlanta() + "]";
-	}
 
 	private double diners;
 	private int edat;
@@ -120,11 +112,20 @@ public class Pacient extends Persona {
 
 	public PacientHospitalitzat hospitaliztar(String tractament) {
 		if (!(this instanceof PacientHospitalitzat)) {
-			return new PacientHospitalitzat(getNom(), getEdat(), tractament);
+			return new PacientHospitalitzat(this, tractament);
 		} else {
 			System.out.println("Aquest pacient ja està hospitalitzat");
 
 		}
 		return (PacientHospitalitzat) this;
+	}
+
+		@Override
+	public String toString() {
+		return "Pacient [nom=" + this.getNom() +
+				", diners=" + this.getDiners() +
+				", edat=" + this.getEdat() +
+				", gravetat=" + this.getGravetat() +
+				", planta=" + this.getPlanta() + "]";
 	}
 }

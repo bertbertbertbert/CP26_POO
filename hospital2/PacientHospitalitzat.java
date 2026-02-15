@@ -16,9 +16,10 @@ public class PacientHospitalitzat extends Pacient {
 		this.tractamentActual = tractamentActual;
 	}
 
-	public void afegirSimptoma(Simptoma s, int diesHospital) {
+	@Override
+	public void afegirSimptoma(Simptoma s) {
 		super.afegirSimptoma(s);
-		this.diesHospitalitzat = diesHospital;
+		this.diesHospitalitzat++;
 	}
 
 	public PacientHospitalitzat(Pacient p, String tractament) {
@@ -27,14 +28,5 @@ public class PacientHospitalitzat extends Pacient {
 		this.diesHospitalitzat = 0;
 	}
 
-	public static PacientHospitalitzat hospitaliztar(Pacient p, String tractament) {
-		if (!(p instanceof PacientHospitalitzat)) {
-			return new PacientHospitalitzat(p.nom, p.edat, tractament);
-		} else {
-			System.out.println("Aquest pacient ja està hospitalitzat");
-
-		}
-		return (PacientHospitalitzat) p;
-	}
 
 }

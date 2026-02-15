@@ -39,7 +39,7 @@ public class Metge extends Persona {
 	}
 	
 	public Metge(String nom, String departament, double souInicial, int anysTreballats) {	
-		this.nom = nom; this.departament = departament; this.souInicial = souInicial; this.anysTreballats = anysTreballats;
+		super(nom); this.departament = departament; this.souInicial = souInicial; this.anysTreballats = anysTreballats;
 	}
 	
 	public void diguesNom() {
