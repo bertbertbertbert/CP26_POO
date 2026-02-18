@@ -8,31 +8,30 @@ import hospital.Pacient;
 
 public class Metge extends Persona {
 	
-	String nom;
-	String departament ="Sense departament";
+   String departament ="Sense departament";
 	int anysTreballats;
 	double souInicial;
 	double sou;
-	static Categoria cat;
+	Categoria cat;
 	public ArrayList<Pacient> pacientsAssingnats = new ArrayList<Pacient>();
 	public Metge() {}
 	
 	public Metge(String nom, Categoria cat) {
-		this.nom = nom;
+		super(nom);
 		this.anysTreballats = 0;
 		this.sou = 1000.0;
 		this.cat = cat;
 	}
 	
 	public Metge(String nom, int anysTreballats) {
-		this(nom, cat);
+		super(nom);
 		for(int i = 0; i < anysTreballats; i++) {
 			this.augmentarAnys();
 		}
 	}
 	
 	public Metge(String nom, int anysTreballats, String departament) {
-		this(nom, cat);
+		super(nom);
 		for(int i = 0; i < anysTreballats; i++) {
 			this.augmentarAnys();
 		}
@@ -40,7 +39,7 @@ public class Metge extends Persona {
 	}
 	
 	public Metge(String nom, String departament, double souInicial, int anysTreballats) {	
-		this.nom = nom; this.departament = departament; this.souInicial = souInicial; this.anysTreballats = anysTreballats;
+		super(nom); this.departament = departament; this.souInicial = souInicial; this.anysTreballats = anysTreballats;
 	}
 	
 	public void diguesNom() {
@@ -50,7 +49,7 @@ public class Metge extends Persona {
 	public void augmentarAnys() {
 		this.anysTreballats++;
 		this.sou *= 1.02;
-		if(this.sou%6==0){
+		if(this.anysTreballats%6==0){
 			this.sou *= 1.05;
 		}
 	}
@@ -70,7 +69,8 @@ public class Metge extends Persona {
 			preu = 0;
 		}
 		if(pac.diners >= preu) {
-			pacientsAssingnats.add(pac);
+			pac.diners -= preu;
+			afegirPacient(pac);
 			return true;
 		}else {
 			return false;

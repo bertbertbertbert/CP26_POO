@@ -1,0 +1,5 @@
+package hospital4;
+
+public enum Diagnosti {
+    IBACTERIANA, IVIRICA, TOS, RESTRENYIMENT, ANSIETAT, DIABETIS, ESGUINC, ALERGIA;
+}
