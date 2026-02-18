@@ -8,7 +8,7 @@ public class test {
 		Pacient marc = new Pacient("Marc",30);
         
         marc.hospitaliztar("sopita");
-		pacientHospitalitzatStatic(alberto, "aguita");
+		pacientHospitalitzatStatic(alberto, "aguaa");
        
 		 PacientHospitalitzat.veureHopsitalitzats();
 	}

@@ -11,13 +11,13 @@ public class poker {
 		Scanner scan = new Scanner(System.in);
 		
 		int k = scan.nextInt();
-		int[] arr = new int[k];
+		int[] ar = new int[k];
 		
-		for(int i = 0; i<arr.length; i++) {
+		for(int i = 0; i<ar.length; i++) {
 			int n = scan.nextInt();
 		}
-
-		Arrays.sort(arr);
+		Arrays.sort(ar);
+	System.out.println(ar);
 	}
 
 }
