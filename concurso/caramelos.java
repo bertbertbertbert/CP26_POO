@@ -18,9 +18,7 @@ public class caramelos {
 			int[] grupos = new int[nGrups];
 			for(int j = 0; j < nPiles; j++) {
 				System.out.println("aloha2 " + j);
-             if(j = ) {
-            	 j=0;
-             }
+     
              grupos[j] += scan.nextInt();
              System.out.println(grupos[j]);
 			}

@@ -111,7 +111,7 @@ public class Metge extends Persona {
 		if (pac.getDiners() >= preuFinal) {	
 			pac.setDiners(pac.getDiners() - preuFinal);
 			afegirPacient(pac);
-			System.out.println("Nom pacient " + pac.nom + " Nom Metge " + this.getNom() + " Preu consulta " + preuFinal + 
+			System.out.println("Nom pacient " + pac.nom + " Nom Metge " +  this.getNom() + " Preu consulta " + preuFinal + 
 			" Gravetat pacient " + pac.getGravetat() + " diners pacient " + pac.getDiners());
 			return true;
 		} else {
