@@ -1,4 +1,4 @@
-package hospital4;
+package hospital5;
 
 public interface Intervencio {
 	

@@ -1,4 +1,4 @@
-package hospital4;
+package hospital5;
 
 import java.util.ArrayList;
 
@@ -34,8 +34,8 @@ public class PacientHospitalitzat extends Pacient {
 		}
 	}
 
-	public PacientHospitalitzat(String nom, int edat) {
-		super(nom, edat);
+	public PacientHospitalitzat(String nom, int edat, Sexe sexe) {
+		super(nom, edat, sexe);
 		nombrePacientsHospitalitzats++;
 	}
 
@@ -48,7 +48,7 @@ public class PacientHospitalitzat extends Pacient {
 	}
 	
 	public PacientHospitalitzat(Pacient p, Diagnosti diagnosti, Tractament tractamentActual) {
-		super(p.getNom(), p.getEdat());
+		super(p.getNom(), p.getEdat(), p.getSexe());
 		this.setGravetat(p.getGravetat());
 		this.setDiners(p.getDiners());
 		this.diagnosti = diagnosti;
@@ -107,6 +107,30 @@ public class PacientHospitalitzat extends Pacient {
 			System.out.println("El pacient no té aquest tractament assignat");
 		}
 	}
+	
+	public boolean esCompatible(Organs organ, PacientHospitalitzat receptor, PacientHospitalitzat donant) {
+		boolean compatible = false;
+		if(!receptor.getMapaOrgans().get(organ) && receptor.getMapaOrgans().get(organ)) {
+			if(receptor.getGravetat() != Gravetat.CRITICA){
+				if(receptor.getSexe().equals(donant.getSexe())){
+					compatible = true;
+				}
+			}
+		}
+		return compatible;
+	}
+	
+	 public Transplament solicitarTrasplantament(PacientHospitalitzat pacient, Organs organ) throws Exception {
+		 PacientHospitalitzat donant = null;
+		 if(esCompatible(organ, this, pacient)) {
+	      donant = pacient;
+		 }
+		 if(donant == null) {
+			 throw new DonantNoCompatibleException("El donant no és compatible");
+		 }else {
+			 return new Transplament(organ, this, donant);
+		 }
+	 }
 
 	@Override
 	public String toString() {
@@ -115,7 +139,6 @@ public class PacientHospitalitzat extends Pacient {
 				", edat=" + this.getEdat() +
 				", gravetat=" + this.getGravetat() +
 				", planta=" + this.getPlanta() +
-				/* ", tractament Actual=" + this.getTractamentActual() + */
 				", dies hopsitalitzat =" + this.getDiesHospitalitzat() + "]";
 	}
 

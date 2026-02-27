@@ -1,11 +1,11 @@
-package hospital4;
+package hospital5;
 
 
 public class test {
 
 	public static void main(String[] args) {
 
-		Pacient alberto = new Pacient("Alberto", 39, 5000, Gravetat.LLEU);
+		Pacient alberto = new Pacient("Alberto", 39, 5000, Gravetat.LLEU, Sexe.MASCULI);
 		Metge marc = new Metge("Marc", "General", 2000, 6, Categoria.ESPECIALISTA);
 		System.out.println("Diners Alberto " + alberto.getDiners());
 		marc.consulta(alberto);
@@ -25,6 +25,11 @@ public class test {
 		cirugiaAlberto.assignar(albertoH);
 		cirugiaAlberto.realitzar(albertoH);
 		System.out.println(albertoH.getGravetat());
+	
+	    for(Organs organ : alberto.getMapaOrgans().keySet()) {
+	    	Boolean value = alberto.getMapaOrgans().get(organ);
+	    	System.out.println(organ + ":" + value);
+	    }
 	}
 
 	private static PacientHospitalitzat pacientHospitalitzatStatic(Pacient p, Diagnosti diagnosti, Tractament tractament) {

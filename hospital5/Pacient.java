@@ -1,14 +1,19 @@
-package hospital4;
+package hospital5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class Pacient extends Persona {
 
 	private double diners;
 	private int edat;
+	private Sexe sexe;
 	private Gravetat gravetat;
 	private Planta planta;
-//	private int gravetatPacient;
+    private HashMap<Organs,Boolean> mapaOrgans = new HashMap<>();
 	private ArrayList<Simptoma> simptomes = new ArrayList<Simptoma>();
 
 	public void setDiners(double diners) {
@@ -21,6 +26,10 @@ public class Pacient extends Persona {
 
 	public int getEdat() {
 		return this.edat;
+	}
+	
+	public Sexe getSexe() {
+		return this.sexe;
 	}
 
 	public Planta getPlanta(){
@@ -45,9 +54,6 @@ public class Pacient extends Persona {
 		this.gravetat = gravetat;
 	}
 
-//	public int getGravetatPacient() {
-//		return gravetatPacient;
-//	}
 
 	public ArrayList<Simptoma> getSimptomes() {
 		return simptomes;
@@ -57,18 +63,48 @@ public class Pacient extends Persona {
 		this.simptomes = simptomes;
 	}
 
-	public Pacient(String nom, int edat) {
+	private void construirMapaOrgans() {	
+		Random random = new Random();		
+		for(Organs organ : Organs.values()) {
+			int limite = 0;
+			if(this.planta == Planta.NEONATAL) {
+				limite = 5;
+			}else if(this.planta == Planta.PEDIATRIA) {
+				limite = 15;
+			}else if(this.planta == Planta.GENERAL) {
+				limite = 35;
+			}else {
+				limite = 60;
+			}
+			
+			this.mapaOrgans.put(organ, random.nextInt(100) <= limite);
+			
+		}
+	}
+	
+	public void setOrgan(Organs organNou, Boolean nouEstat) {
+		this.mapaOrgans.put(organNou, nouEstat);
+		}
+	
+	
+	public HashMap<Organs, Boolean> getMapaOrgans(){
+     return this.mapaOrgans;
+	
+	}
+	
+	public Pacient(String nom, int edat, Sexe sexe) {
 		super(nom);
 		this.edat = edat;
 		this.diners = 1000;
-
+		this.sexe = sexe;
 	}
 
-	public Pacient(String nom, int edat, double diners, Gravetat gravetat) {
+	public Pacient(String nom, int edat, double diners, Gravetat gravetat, Sexe sexe) {
 		super(nom);
 		this.diners = diners;
 		this.gravetat = gravetat;
-
+		this.sexe = sexe;
+		construirMapaOrgans();
 		if (edat < 0) {
 			this.edat = 0;
 		} else if (edat > 150) {
@@ -76,7 +112,6 @@ public class Pacient extends Persona {
 		} else {
 			this.edat = edat;
 		}
-
 		if (edat <= 1) {
 			this.planta = Planta.NEONATAL;
 		} else if (edat > 1 && edat <= 18) {
@@ -88,20 +123,6 @@ public class Pacient extends Persona {
 		}
 	}
 
-//	private int gravetatANum(Gravetat gravetat) {
-//		gravetat = this.gravetat;
-//
-//		if (this.gravetat == Gravetat.LLEU) {
-//			gravetatPacient = 1;
-//		} else if (this.gravetat == Gravetat.MODERADA) {
-//			gravetatPacient = 2;
-//		} else if (this.gravetat == Gravetat.GREU) {
-//			gravetatPacient = 3;
-//		} else if (this.gravetat == Gravetat.CRITICA) {
-//			gravetatPacient = 4;
-//		}
-//		return gravetatPacient;
-//	}
 
 	public void afegirSimptoma(Simptoma s) {
 		simptomes.add(s);
@@ -116,22 +137,7 @@ public class Pacient extends Persona {
 			this.gravetat = s.getGravetat();
 		}
 		
-		//cridem a la funcio que ens dona el numero de la gravetat del pacient per comparar amb la gravetat del simptoma
-//		gravetatPacient = gravetatANum();
-//		int tipusGravetatSimptoma = 0;
-//		if(s.gravetat == Gravetat.LLEU) {
-//			tipusGravetatSimptoma = 1;
-//		}else if(s.gravetat == Gravetat.MODERADA) {
-//			tipusGravetatSimptoma = 2;
-//		}else if(s.gravetat == Gravetat.GREU) {
-//			tipusGravetatSimptoma = 3;
-//		}else if(s.gravetat == Gravetat.CRITICA) {
-//			tipusGravetatSimptoma = 4;
-//		}
-		
-//		if(tipusGravetatSimptoma > gravetatPacient) {
-//			this.gravetat = s.gravetat;
-//		}
+
 	}
 
 	public PacientHospitalitzat hospitaliztar(Diagnosti diagnosti, Tractament tractament) {
@@ -149,6 +155,7 @@ public class Pacient extends Persona {
 		return "Pacient [nom=" + this.getNom() +
 				", diners=" + this.getDiners() +
 				", edat=" + this.getEdat() +
+				", sexe=" + this.getSexe() +
 				", gravetat=" + this.getGravetat() +
 				", planta=" + this.getPlanta() + "]";
 	}

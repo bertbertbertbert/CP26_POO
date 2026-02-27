@@ -1,9 +1,13 @@
-package hospital2;
-import hospital.Gravetat;
+package hospital5;
 
 public class Simptoma {
 String nomSimptoma;
-private Gravetat gravetat;
+Gravetat gravetat;
+
+public Simptoma(String nomSimptoma, Gravetat gravetat) {
+	this.nomSimptoma = nomSimptoma;
+	this.gravetat = gravetat;
+}
 public Gravetat getGravetat() {
 	return gravetat;
 }
