@@ -1,6 +1,7 @@
 package hospital5;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PacientHospitalitzat extends Pacient {
 
@@ -47,10 +48,19 @@ public class PacientHospitalitzat extends Pacient {
 		this.intervencioAssignada = intA;
 	}
 	
+	public void setMapaOrgans(HashMap<Organs,Boolean> mapa) {
+	    for(Organs organ : mapa.keySet()) {
+	    	Boolean value = mapa.get(organ);
+            this.setOrgan(organ, value);
+	    }
+	}
+	
+	
 	public PacientHospitalitzat(Pacient p, Diagnosti diagnosti, Tractament tractamentActual) {
 		super(p.getNom(), p.getEdat(), p.getSexe());
 		this.setGravetat(p.getGravetat());
 		this.setDiners(p.getDiners());
+		this.setMapaOrgans(p.getMapaOrgans());
 		this.diagnosti = diagnosti;
 		this.tractamentsActuals.add(tractamentActual);
 		this.diesHospitalitzat = 0;
@@ -100,7 +110,6 @@ public class PacientHospitalitzat extends Pacient {
 	}
 
 	public void administrarTractament(Tractament tractament) {
-
 		if (tractamentsActuals.contains(tractament)) {
 			tractament.administrar(this);
 		} else {

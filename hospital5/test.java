@@ -6,30 +6,27 @@ public class test {
 	public static void main(String[] args) {
 
 		Pacient alberto = new Pacient("Alberto", 39, 5000, Gravetat.LLEU, Sexe.MASCULI);
-		Metge marc = new Metge("Marc", "General", 2000, 6, Categoria.ESPECIALISTA);
-		System.out.println("Diners Alberto " + alberto.getDiners());
-		marc.consulta(alberto);
-		PacientHospitalitzat albertoH = alberto.hospitaliztar(Diagnosti.ANSIETAT, new Medicament("Ansiolitic", TipusMedicament.ANSIOLÍTIC));
-		//albertoH.administrarTractament(albertoH.getTractamentActual().get(0));
-        //PacientHospitalitzat.veureHopsitalitzats();
-        //System.out.println(PacientHospitalitzat.getNombrePacientsHospitalitzats());
-		//PacientHospitalitzat.veureHopsitalitzats();
-		System.out.println(albertoH.getGravetat());
 		Simptoma anginas = new Simptoma("anginas", Gravetat.CRITICA);
-		albertoH.afegirSimptoma(anginas, 0);
-		//creo la cirugia		
-		Cirugia cirugiaAlberto = new Cirugia("cirugia Alberto");
-		System.out.println(cirugiaAlberto.getExitosa());
-		
-		//asigno y realizo la cirugia
-		cirugiaAlberto.assignar(albertoH);
-		cirugiaAlberto.realitzar(albertoH);
-		System.out.println(albertoH.getGravetat());
+		PacientHospitalitzat albertoH = alberto.hospitaliztar(Diagnosti.ANSIETAT, new Medicament("Ansiolitic", TipusMedicament.ANSIOLÍTIC));
+		PacientHospitalitzat marc = alberto.hospitaliztar(Diagnosti.ANSIETAT, new Medicament("Ansiolitic", TipusMedicament.ANSIOLÍTIC));
 	
-	    for(Organs organ : alberto.getMapaOrgans().keySet()) {
-	    	Boolean value = alberto.getMapaOrgans().get(organ);
+	    for(Organs organ : albertoH.getMapaOrgans().keySet()) {
+	    	Boolean value = albertoH.getMapaOrgans().get(organ);
 	    	System.out.println(organ + ":" + value);
+	    	
 	    }
+	    
+	    System.out.println(alberto.getMapaOrgans());
+	    System.out.println(albertoH.getMapaOrgans());
+	    
+        try {
+	    Transplament fetge = albertoH.solicitarTrasplantament(marc, Organs.FETGE);
+		  System.out.println("Hem trobat donant! Codi de trasplantament " + fetge);
+        }catch(Exception e) {
+        	 System.out.println("Transplants no posible");
+        }finally {
+      		  System.out.println(albertoH.getNom() + " segueix hospitalitzat");
+        }
 	}
 
 	private static PacientHospitalitzat pacientHospitalitzatStatic(Pacient p, Diagnosti diagnosti, Tractament tractament) {

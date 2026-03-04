@@ -86,7 +86,7 @@ public class Pacient extends Persona {
 		this.mapaOrgans.put(organNou, nouEstat);
 		}
 	
-	
+
 	public HashMap<Organs, Boolean> getMapaOrgans(){
      return this.mapaOrgans;
 	
@@ -105,6 +105,7 @@ public class Pacient extends Persona {
 		this.gravetat = gravetat;
 		this.sexe = sexe;
 		construirMapaOrgans();
+		
 		if (edat < 0) {
 			this.edat = 0;
 		} else if (edat > 150) {
