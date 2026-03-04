@@ -6,9 +6,9 @@ public class test {
 	public static void main(String[] args) {
 
 		Pacient alberto = new Pacient("Alberto", 39, 5000, Gravetat.LLEU, Sexe.MASCULI);
-		Simptoma anginas = new Simptoma("anginas", Gravetat.CRITICA);
+		Pacient marc = new Pacient("Alberto", 39, 5000, Gravetat.LLEU, Sexe.MASCULI);
 		PacientHospitalitzat albertoH = alberto.hospitaliztar(Diagnosti.ANSIETAT, new Medicament("Ansiolitic", TipusMedicament.ANSIOLÍTIC));
-		PacientHospitalitzat marc = alberto.hospitaliztar(Diagnosti.ANSIETAT, new Medicament("Ansiolitic", TipusMedicament.ANSIOLÍTIC));
+		PacientHospitalitzat marcA = marc.hospitaliztar(Diagnosti.ANSIETAT, new Medicament("Ansiolitic", TipusMedicament.ANSIOLÍTIC));
 	
 	    for(Organs organ : albertoH.getMapaOrgans().keySet()) {
 	    	Boolean value = albertoH.getMapaOrgans().get(organ);
@@ -17,10 +17,10 @@ public class test {
 	    }
 	    
 	    System.out.println(alberto.getMapaOrgans());
-	    System.out.println(albertoH.getMapaOrgans());
+	    System.out.println(marc.getMapaOrgans());
 	    
         try {
-	    Transplament fetge = albertoH.solicitarTrasplantament(marc, Organs.FETGE);
+	    Transplament fetge = albertoH.solicitarTrasplantament(marcA, Organs.FETGE);
 		  System.out.println("Hem trobat donant! Codi de trasplantament " + fetge);
         }catch(Exception e) {
         	 System.out.println("Transplants no posible");
