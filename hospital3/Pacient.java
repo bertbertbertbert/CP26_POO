@@ -1,6 +1,7 @@
 package hospital3;
 
 import java.util.ArrayList;
+
 import hospital.Gravetat;
 import hospital.Planta;
 
@@ -11,7 +12,7 @@ public class Pacient extends Persona {
 	private Gravetat gravetat;
 	private Planta planta;
 	private int gravetatPacient;
-	private ArrayList<Simptoma> simptomes = new ArrayList<Simptoma>();
+	private ArrayList<Simptoma> simptomes = new ArrayList<>();
 
 	public void setDiners(double diners) {
 		this.diners = diners;

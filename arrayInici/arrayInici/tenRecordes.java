@@ -8,9 +8,9 @@ public class tenRecordes {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int casos = scan.nextInt();
-		 
+
 		for(int i = 0; i<casos; i++) {
 			int k = scan.nextInt();
 			int[] arr = new int[k];
@@ -20,7 +20,7 @@ public class tenRecordes {
 			int p = scan.nextInt();
 			System.out.println(arr[p]);
 		}
-		
+
 	}
 
 }

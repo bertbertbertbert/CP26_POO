@@ -6,9 +6,9 @@ public class CambialoUnPoco {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
-		
+
 		int casos = scan.nextInt();
 		int[] arr;
 		for(int i = 0; i < casos; i++) {
@@ -22,7 +22,7 @@ public class CambialoUnPoco {
 			for(int y = 0; y < arr.length; y++) {
 				if (arr[y] == p1) {
 					arr[y] = p2;
-				}	
+				}
 			}
             for (int j = 0; j < K; j++) {
                 System.out.print(arr[j] + " ");

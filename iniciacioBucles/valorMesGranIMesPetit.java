@@ -6,7 +6,7 @@ public class valorMesGranIMesPetit {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
 		int numGran=-100000;
 		int numPetit=100000;
@@ -19,7 +19,7 @@ public class valorMesGranIMesPetit {
 			}
 			num = scan.nextInt();
 		}
-		
+
 		System.out.print(numGran + " " + numPetit);
 
 	}

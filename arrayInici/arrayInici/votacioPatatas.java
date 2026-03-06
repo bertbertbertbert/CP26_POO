@@ -6,9 +6,9 @@ public class votacioPatatas {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
-		
+
 		int casos=scan.nextInt();
 		for(int j = 0; j<casos; j++) {
 		int k = scan.nextInt();
@@ -21,13 +21,13 @@ public class votacioPatatas {
 			}
 		}
 		int mostrarGanador = 0;
-		for(int i = 0; i < arr.length; i++) {		
+		for(int i = 0; i < arr.length; i++) {
 			if(arr[i] == winner ) {
 				mostrarGanador = i + 1;
 			}
-           
+
 		}
-		
+
 		System.out.println(mostrarGanador);
 		}
 	}

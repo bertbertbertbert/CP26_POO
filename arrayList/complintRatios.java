@@ -7,11 +7,11 @@ public class complintRatios {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
-		
+
 		int casos = scan.nextInt();
-		
+
 		for(int i = 0; i<casos; i++) {
 			ArrayList<String> lista = new ArrayList<>();
 			int n = scan.nextInt();
@@ -20,11 +20,11 @@ public class complintRatios {
 				String d = scan.next();
 				lista.add(d);
 			}
-			
+
 			int r = scan.nextInt();
 			lista.remove(r);
-			for(int y = 0; y<lista.size(); y++) {
-				System.out.print(lista.get(y) + " ");
+			for (String element : lista) {
+				System.out.print(element + " ");
 			}
 		}
 

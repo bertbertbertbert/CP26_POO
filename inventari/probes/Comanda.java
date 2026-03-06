@@ -8,7 +8,7 @@ class Comanda{
 	protected Producte producte;
 	protected int quantitat;
 	protected double preuTotal;
-	public static ArrayList<Comanda> comandes = new ArrayList<Comanda>();
+	public static ArrayList<Comanda> comandes = new ArrayList<>();
 
 	public Comanda(String dni, Producte producte, int quantitat) {
 		this.dni = dni;

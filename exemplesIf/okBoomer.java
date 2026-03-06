@@ -8,9 +8,9 @@ public class okBoomer {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int dataNaixament = scan.nextInt();
-		
+
 		if(dataNaixament>=1945 && dataNaixament<=1965) {
 			System.out.print("ok boomer");
 		}else {

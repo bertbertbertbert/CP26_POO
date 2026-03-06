@@ -35,7 +35,7 @@ public class Metge extends Persona {
 	}
 
 	public void setCat(Categoria cat) {
-		if (((this.cat == Categoria.RESIDENT || this.cat == Categoria.ESPECIALISTA) && cat == Categoria.INTERN) 
+		if (((this.cat == Categoria.RESIDENT || this.cat == Categoria.ESPECIALISTA) && cat == Categoria.INTERN)
 			|| (this.anysTreballats > 2 && cat == Categoria.INTERN)) {
 			System.out.println("Un resident, especialista o treballador amb >2 anys treballats no pot pasar a ser intern");
 		} else {
@@ -44,10 +44,10 @@ public class Metge extends Persona {
 
 	}
 
-	private ArrayList<Pacient> pacientsAssingnats = new ArrayList<Pacient>();
+	private ArrayList<Pacient> pacientsAssingnats = new ArrayList<>();
 
 	public Metge() {
-	};
+	}
 
 	public Metge(String nom, Categoria cat) {
 		super(nom);

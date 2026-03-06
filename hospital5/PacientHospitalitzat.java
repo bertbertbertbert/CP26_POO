@@ -11,8 +11,8 @@ public class PacientHospitalitzat extends Pacient {
 	private Diagnosti diagnosti;
 	private static int nombrePacientsHospitalitzats = 0;
     private Intervencio intervencioAssignada;
-    
-    
+
+
 	public ArrayList<Tractament> getTractamentActual() {
 		return tractamentsActuals;
 	}
@@ -43,19 +43,19 @@ public class PacientHospitalitzat extends Pacient {
 	public Intervencio getIntervencioAssignada() {
 		return this.intervencioAssignada;
 	}
-	
+
 	public void setIntervencioAssignada(Intervencio intA) {
 		this.intervencioAssignada = intA;
 	}
-	
+
 	public void setMapaOrgans(HashMap<Organs,Boolean> mapa) {
 	    for(Organs organ : mapa.keySet()) {
 	    	Boolean value = mapa.get(organ);
             this.setOrgan(organ, value);
 	    }
 	}
-	
-	
+
+
 	public PacientHospitalitzat(Pacient p, Diagnosti diagnosti, Tractament tractamentActual) {
 		super(p.getNom(), p.getEdat(), p.getSexe());
 		this.setGravetat(p.getGravetat());
@@ -116,29 +116,36 @@ public class PacientHospitalitzat extends Pacient {
 			System.out.println("El pacient no té aquest tractament assignat");
 		}
 	}
-	
-	public boolean esCompatible(Organs organ, PacientHospitalitzat receptor, PacientHospitalitzat donant) {
-		boolean compatible = false;
-		if(!receptor.getMapaOrgans().get(organ) && receptor.getMapaOrgans().get(organ)) {
-			if(receptor.getGravetat() != Gravetat.CRITICA){
-				if(receptor.getSexe().equals(donant.getSexe())){
-					compatible = true;
+
+	public boolean esCompatible(Organs organ, PacientHospitalitzat receptor, PacientHospitalitzat donant) throws ReceptorNoReuTransplament {
+		String mensaje="organs no compatibles";
+		if(!receptor.getMapaOrgans().get(organ) && donant.getMapaOrgans().get(organ)) {
+			if(receptor.getGravetat() == Gravetat.CRITICA){
+				mensaje="els organs són compatibles però la gravetat del receptor es crítica";				
+			}else {
+				if(!receptor.getSexe().equals(donant.getSexe())){
+					mensaje="No són del mateix sexe";
+					
+				}else {
+					return true;
 				}
 			}
 		}
-		return compatible;
+		throw new ReceptorNoReuTransplament(mensaje);
 	}
-	
-	 public Transplament solicitarTrasplantament(PacientHospitalitzat pacient, Organs organ) throws Exception {
+
+	 public Transplament solicitarTrasplantament(PacientHospitalitzat pacient, Organs organ) throws DonantNoCompatibleException {
 		 PacientHospitalitzat donant = null;
-		 if(esCompatible(organ, this, pacient)) {
-	      donant = pacient;
-		 }
-		 if(donant == null) {
-			 throw new DonantNoCompatibleException("El donant no és compatible");
-		 }else {
-			 return new Transplament(organ, this, donant);
-		 }
+		 try {
+			 if(esCompatible(organ, this, pacient)) {
+			      donant = pacient;
+			      return new Transplament(organ, this, donant);
+			}
+			 throw new DonantNoCompatibleException("El donant no es compatible");
+		 }catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new DonantNoCompatibleException("El donant no es compatible");
+		}
 	 }
 
 	@Override

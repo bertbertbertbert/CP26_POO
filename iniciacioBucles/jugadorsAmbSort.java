@@ -8,7 +8,7 @@ public class jugadorsAmbSort {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int num = scan.nextInt();
 		int numGran = 0;
          while(num != 0) {
@@ -17,7 +17,7 @@ public class jugadorsAmbSort {
         	 }
         	 num = scan.nextInt();
          }
-         
+
          System.out.print(numGran);
 	}
 

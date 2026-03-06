@@ -8,11 +8,11 @@ public class universInvertit {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		double  nombreInvertit = scan.nextDouble();
-		
+
 		double resultatInvertit = 1/nombreInvertit;
-		
+
 		System.out.print(resultatInvertit);
 
 	}

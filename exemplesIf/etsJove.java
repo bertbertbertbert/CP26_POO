@@ -8,9 +8,9 @@ public class etsJove {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int edat = scan.nextInt();
-		
+
 		if(edat>=32) {
 			System.out.print("NO");
 		}else {

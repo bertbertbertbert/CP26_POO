@@ -3,7 +3,7 @@ import java.util.Random;
 public class Terapia extends Tractament{
 
    TipusTerapia tipusT;
-    
+
     public Terapia(String nom, TipusTerapia tipusT) {
         super(nom);
         this.tipusT = tipusT;
@@ -31,6 +31,6 @@ public class Terapia extends Tractament{
          }else if (this.tipusT.equals("TIMO")) {
          p.augmentarGravetat();
         }
-   
+
      }
 }

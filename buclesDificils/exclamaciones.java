@@ -11,7 +11,7 @@ public class exclamaciones {
 		String resposta = "";
 		int contApertura;
 		int contCierre;
-		resposta = scan.nextLine();		
+		resposta = scan.nextLine();
 		while(!resposta.equals("FIN")) {
 			contApertura = 0;
 			contCierre = 0;
@@ -26,7 +26,7 @@ public class exclamaciones {
 				System.out.println("SI");
 			}else {
 			    System.out.println("NO");
-			}			
+			}
 			resposta = scan.nextLine();
 
 		}

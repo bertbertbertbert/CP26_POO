@@ -6,9 +6,9 @@ public class cagaTio {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
-		
+
 		int casos = scan.nextInt();
 		String acc = "";
 		String cagatio = "";
@@ -17,13 +17,13 @@ public class cagaTio {
 			generacions = scan.nextInt();
 			acc = "";
 		for(int y = 1; y <= generacions; y++){
-			
+
 			if(y != 1 && y%2 != 0) {
 				acc = acc + "caga";
 			}
-			
+
 		}
-		
+
 		System.out.println("Caga " + acc + "tio!");
 
 	   }

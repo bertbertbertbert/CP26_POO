@@ -13,5 +13,5 @@ public Gravetat getGravetat() {
 }
 public void setGravetat(Gravetat gravetat) {
 	this.gravetat = gravetat;
-}	
+}
 }

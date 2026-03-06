@@ -5,18 +5,18 @@ import java.util.Scanner;
 public class venda {
 
 
-	
+
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
 
-		
+
 
 		int vueltas = sc.nextInt();
 
 
 			for (int i = 0; i < vueltas; i++) {
-		  		int miVel = sc.nextInt(); 
+		  		int miVel = sc.nextInt();
 				 int compaVel = sc.nextInt();
 				if (miVel >= compaVel) {
 
@@ -25,21 +25,21 @@ public class venda {
 					 int distTorre = sc.nextInt();
 			       	 int miTotal=0;
 				     int enemyTotal= - distEnemy;
-				     int compaTotal=0;		
+				     int compaTotal=0;
 				boolean tuVivo = true;
 				boolean compiVivo = true;
- 
+
 				if(distEnemy > 0) {
-					
-				
+
+
 				while (miTotal <= distTorre) {
                      miTotal += miVel;
-					enemyTotal += enemyVel;				
+					enemyTotal += enemyVel;
 					if(miTotal <= enemyTotal) {
 						tuVivo = false;
 					}
 
-				} 
+				}
 				enemyTotal= 0;
 				enemyTotal = enemyTotal - distEnemy;
 				while(compaTotal <= distTorre) {
@@ -49,7 +49,7 @@ public class venda {
 						compiVivo = false;
 					}
 				}
-			
+
 
                 if(tuVivo && compiVivo) {
 					System.out.println("SALVATS");
@@ -61,18 +61,18 @@ public class venda {
 					System.out.println("MORTS");
 
                 }
-				
+
 				}else {
 					System.out.println("MORTS");
 					}
 
 
 
-			}	
-				
-			
-		} 
-		
+			}
+
+
+		}
+
 
 	}
 

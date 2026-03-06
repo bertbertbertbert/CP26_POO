@@ -3,5 +3,5 @@ import hospital.Gravetat;
 
 public class Simptoma {
 String nomSimptoma;
-Gravetat gravetat;	
+Gravetat gravetat;
 }

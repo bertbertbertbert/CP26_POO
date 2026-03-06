@@ -10,14 +10,14 @@ public class Metge {
 	double souInicial;
 	double sou;
 	Categoria cat;
-	public ArrayList<Pacient> pacientsAssingnats = new ArrayList<Pacient>();
+	public ArrayList<Pacient> pacientsAssingnats = new ArrayList<>();
 
 	public Metge() {
 		this.nom = "Sense definir";
 		this.anysTreballats = 0;
 		this.sou = 1000.0;
 		this.departament = "Sense Departament";
-	};
+	}
 
 	public Metge(String nom) {
 		this.nom = nom;

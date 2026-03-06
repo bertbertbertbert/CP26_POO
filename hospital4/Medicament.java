@@ -11,8 +11,9 @@ public class Medicament extends Tractament {
         }
 
 
-        public void administrar(PacientHospitalitzat p) {
-                
+        @Override
+		public void administrar(PacientHospitalitzat p) {
+
         if(!super.actualitzarQuantitat()){
                   System.out.println("Quantitat insuficient");
                   return;

@@ -18,8 +18,8 @@ public class dobleBucleMes {
 			for(int j = 0; j < contPositivo; j++) {
 				resposta = resposta + contNegativo;
 				contNegativo--;
-				
-				
+
+
 			}
 		}
 		System.out.print(resposta);

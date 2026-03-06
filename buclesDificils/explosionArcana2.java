@@ -7,9 +7,9 @@ public class explosionArcana2 {
 
 			public static void main(String[] args) {
 				// TODO Auto-generated method stub
-				
+
 				Scanner scan = new Scanner(System.in);
-				
+
 				int dany = scan.nextInt();
 				scan.nextLine();
 				int vidaEnemic = scan.nextInt();
@@ -23,7 +23,7 @@ public class explosionArcana2 {
 				System.out.print(cont);
 				}
 
-			
+
 
 	}
 

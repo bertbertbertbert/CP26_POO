@@ -6,7 +6,7 @@ public class apostesPerdudesEasy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
 		int num;
 		int cont = 0;
@@ -16,7 +16,7 @@ public class apostesPerdudesEasy {
         		cont++;
         	}
         }
-        
+
         System.out.print(cont);
 
 	}

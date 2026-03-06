@@ -9,7 +9,7 @@ public class Pacient extends Persona {
 	private Gravetat gravetat;
 	private Planta planta;
 //	private int gravetatPacient;
-	private ArrayList<Simptoma> simptomes = new ArrayList<Simptoma>();
+	private ArrayList<Simptoma> simptomes = new ArrayList<>();
 
 	public void setDiners(double diners) {
 		this.diners = diners;
@@ -105,7 +105,7 @@ public class Pacient extends Persona {
 
 	public void afegirSimptoma(Simptoma s) {
 		simptomes.add(s);
-	    
+
 		if(this.gravetat.equals("")) {
 			this.gravetat = s.getGravetat();
 		}else if(s.getGravetat() == Gravetat.MODERADA && this.gravetat == Gravetat.LLEU) {
@@ -115,7 +115,7 @@ public class Pacient extends Persona {
 		}else if(s.getGravetat() == Gravetat.CRITICA &&(this.gravetat == Gravetat.LLEU || this.gravetat == Gravetat.MODERADA || this.gravetat == Gravetat.GREU)) {
 			this.gravetat = s.getGravetat();
 		}
-		
+
 		//cridem a la funcio que ens dona el numero de la gravetat del pacient per comparar amb la gravetat del simptoma
 //		gravetatPacient = gravetatANum();
 //		int tipusGravetatSimptoma = 0;
@@ -128,7 +128,7 @@ public class Pacient extends Persona {
 //		}else if(s.gravetat == Gravetat.CRITICA) {
 //			tipusGravetatSimptoma = 4;
 //		}
-		
+
 //		if(tipusGravetatSimptoma > gravetatPacient) {
 //			this.gravetat = s.gravetat;
 //		}

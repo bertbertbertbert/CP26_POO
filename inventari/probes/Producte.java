@@ -8,7 +8,7 @@ public class Producte {
     protected String nom;
     protected double preu;
     protected int estoc;
-    public static ArrayList<Producte> productes = new ArrayList<Producte>();
+    public static ArrayList<Producte> productes = new ArrayList<>();
 
     public Producte(int codi, String nom, double preu, int estoc) {
         this.codi = codi;

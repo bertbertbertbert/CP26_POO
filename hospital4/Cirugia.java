@@ -5,7 +5,7 @@ import java.util.Random;
 public class Cirugia extends Tractament implements Intervencio {
 
 	private boolean exitosa;
-	
+
 	public Cirugia(String nom) {
 		super(nom);
 		Random random = new Random();
@@ -17,14 +17,17 @@ public class Cirugia extends Tractament implements Intervencio {
 		return this.exitosa;
 	}
 
+	@Override
 	public void administrar(PacientHospitalitzat p) {
 		this.assignar(p);
 	}
-	
+
+	@Override
 	public void assignar(PacientHospitalitzat p) {
 		p.setIntervencioAssignada(this);
 	}
-	
+
+	@Override
 	public void realitzar(PacientHospitalitzat p) {
 		if(p.getIntervencioAssignada() == this) {
 		if(this.exitosa) {
@@ -37,5 +40,5 @@ public class Cirugia extends Tractament implements Intervencio {
 			System.out.println("Aquest pacient no te asignada aquesta cirurgia");
 		}
 	}
-	
+
 }

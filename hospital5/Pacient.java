@@ -1,9 +1,7 @@
 package hospital5;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class Pacient extends Persona {
@@ -14,7 +12,7 @@ public class Pacient extends Persona {
 	private Gravetat gravetat;
 	private Planta planta;
     private HashMap<Organs,Boolean> mapaOrgans = new HashMap<>();
-	private ArrayList<Simptoma> simptomes = new ArrayList<Simptoma>();
+	private ArrayList<Simptoma> simptomes = new ArrayList<>();
 
 	public void setDiners(double diners) {
 		this.diners = diners;
@@ -27,7 +25,7 @@ public class Pacient extends Persona {
 	public int getEdat() {
 		return this.edat;
 	}
-	
+
 	public Sexe getSexe() {
 		return this.sexe;
 	}
@@ -63,8 +61,8 @@ public class Pacient extends Persona {
 		this.simptomes = simptomes;
 	}
 
-	private void construirMapaOrgans() {	
-		Random random = new Random();		
+	private void construirMapaOrgans() {
+		Random random = new Random();
 		for(Organs organ : Organs.values()) {
 			int limite = 0;
 			if(this.planta == Planta.NEONATAL) {
@@ -76,22 +74,22 @@ public class Pacient extends Persona {
 			}else {
 				limite = 60;
 			}
-			
+
 			this.mapaOrgans.put(organ, random.nextInt(100) <= limite);
-			
+
 		}
 	}
-	
+
 	public void setOrgan(Organs organNou, Boolean nouEstat) {
 		this.mapaOrgans.put(organNou, nouEstat);
 		}
-	
+
 
 	public HashMap<Organs, Boolean> getMapaOrgans(){
      return this.mapaOrgans;
-	
+
 	}
-	
+
 	public Pacient(String nom, int edat, Sexe sexe) {
 		super(nom);
 		this.edat = edat;
@@ -105,7 +103,7 @@ public class Pacient extends Persona {
 		this.gravetat = gravetat;
 		this.sexe = sexe;
 		construirMapaOrgans();
-		
+
 		if (edat < 0) {
 			this.edat = 0;
 		} else if (edat > 150) {
@@ -127,7 +125,7 @@ public class Pacient extends Persona {
 
 	public void afegirSimptoma(Simptoma s) {
 		simptomes.add(s);
-	    
+
 		if(this.gravetat.equals("")) {
 			this.gravetat = s.getGravetat();
 		}else if(s.getGravetat() == Gravetat.MODERADA && this.gravetat == Gravetat.LLEU) {
@@ -137,19 +135,18 @@ public class Pacient extends Persona {
 		}else if(s.getGravetat() == Gravetat.CRITICA &&(this.gravetat == Gravetat.LLEU || this.gravetat == Gravetat.MODERADA || this.gravetat == Gravetat.GREU)) {
 			this.gravetat = s.getGravetat();
 		}
-		
-
 	}
 
-	public PacientHospitalitzat hospitaliztar(Diagnosti diagnosti, Tractament tractament) {
+	public PacientHospitalitzat hospitaliztar(Diagnosti diagnosti, Tractament tractament) throws PacientJaHospitalitzatException {
+
 		if (!(this instanceof PacientHospitalitzat)) {
 			return new PacientHospitalitzat(this, diagnosti, tractament);
 		} else {
-			System.out.println("Aquest pacient ja està hospitalitzat");
+			throw new PacientJaHospitalitzatException("Aquest pacient ya està hospitalitzat");
 
 		}
-		return (PacientHospitalitzat) this;
 	}
+
 
 		@Override
 	public String toString() {

@@ -1,12 +1,13 @@
 package hospital2;
 import java.util.ArrayList;
+
 import hospital.Gravetat;
 
 public class Pacient extends Persona {
 	int edat;
 	Gravetat gravetat;
 //	int gravetatPacient;
-	ArrayList <Simptoma> simptomes = new ArrayList <Simptoma>();
+	ArrayList <Simptoma> simptomes = new ArrayList <>();
 	public Pacient(String nom, int edat) {
 		super(nom);
 		this.edat = edat;
@@ -17,10 +18,10 @@ public class Pacient extends Persona {
 		this.edat = edat;
 		this.gravetat = gravetat;
 	}
-	
+
 //	private int gravetatANum(){
 //		gravetat = this.gravetat;
-//		
+//
 //		if(this.gravetat == Gravetat.LLEU) {
 //			gravetatPacient = 1;
 //		}else if(this.gravetat == Gravetat.MODERADA) {
@@ -32,10 +33,10 @@ public class Pacient extends Persona {
 //		}
 //		return gravetatPacient;
 //	}
-	
+
 	public void afegirSimptoma(Simptoma s) {
 		simptomes.add(s);
-	
+
 		if(s.getGravetat() == Gravetat.MODERADA && this.gravetat == Gravetat.LLEU) {
 			this.gravetat = s.getGravetat();
 		}else if(s.getGravetat() == Gravetat.GREU && (this.gravetat == Gravetat.LLEU || this.gravetat == Gravetat.MODERADA)) {
@@ -43,7 +44,7 @@ public class Pacient extends Persona {
 		}else if(s.getGravetat() == Gravetat.CRITICA &&(this.gravetat == Gravetat.LLEU || this.gravetat == Gravetat.MODERADA || this.gravetat == Gravetat.GREU)) {
 			this.gravetat = s.getGravetat();
 		}
-		
+
 		//cridem a la funcio que ens dona el numero de la gravetat del pacient per comparar amb la gravetat del simptoma
 //		gravetatPacient = gravetatANum();
 //		int tipusGravetatSimptoma = 0;
@@ -56,18 +57,18 @@ public class Pacient extends Persona {
 //		}else if(s.gravetat == Gravetat.CRITICA) {
 //			tipusGravetatSimptoma = 4;
 //		}
-		
+
 //		if(tipusGravetatSimptoma > gravetatPacient) {
 //			this.gravetat = s.gravetat;
 //		}
 	}
-	
+
 	public PacientHospitalitzat hospitaliztar(String tractament) {
 		if(!(this instanceof PacientHospitalitzat)) {
 			 return new PacientHospitalitzat(this, tractament);
 		}else {
 			System.out.println("Aquest pacient ja està hospitalitzat");
-			
+
 		}
 		return (PacientHospitalitzat) this;
 	}

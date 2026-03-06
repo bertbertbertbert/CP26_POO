@@ -13,7 +13,7 @@ public class elMeuSegonBucle {
 		int num2;
 		for(int i = 0; i < casos; i++) {
 			num = scan.nextInt();
-			
+
 			for(int y = 0; y < num; y++){
 				num2 = scan.nextInt();
 				int num3 = num2 + 1;

@@ -14,7 +14,7 @@ public class compteVeri {
 		int atacT;
 		int ronda;
 		String matador ="";
-		
+
 		for(int i = 0; i < casos; i++) {
 			vidaEnemic = scan.nextInt();
 			VidaRestantEn = vidaEnemic;
@@ -23,25 +23,25 @@ public class compteVeri {
 			ronda = 0;
 			while(VidaRestantEn >= 0) {
 				ronda++;
-				
-				
+
+
 				VidaRestantEn -= atacR;
 				if(VidaRestantEn <= 0) {
 					matador = "RAMMUS";
 					break;
 				}
-				
-				
+
+
 				VidaRestantEn -= atacT;
 				if(VidaRestantEn <= 0) {
 					matador = "TWITCH";
 				   break;
 				}
-				
+
              }
-			
+
 			System.out.println(matador +" "+ronda);
-			
+
 		}
 	}
 

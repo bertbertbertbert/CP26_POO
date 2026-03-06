@@ -6,13 +6,13 @@ public class banana {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
-		
+
 		int casos = scan.nextInt();
         int vida;
         int dany;
-        
+
         for(int i = 0; i < casos; i++) {
         	vida = scan.nextInt();
         	dany = scan.nextInt();

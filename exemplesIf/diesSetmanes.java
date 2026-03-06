@@ -6,20 +6,20 @@ public class diesSetmanes {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
-		
+
 		int numDia = scan.nextInt();
 		String dia ="";
-		
+
 		switch(numDia){
 		case 1:
 			dia = "Monday";
 			break;
-		case 2: 
+		case 2:
 			dia = "Tuesday";
 		    break;
-		case 3: 
+		case 3:
 			dia = "Wednesday";
 			break;
 		case 4:
@@ -37,7 +37,7 @@ public class diesSetmanes {
 		default:
 			break;
 		}
-       
+
 		System.out.print(dia);
 
 	}

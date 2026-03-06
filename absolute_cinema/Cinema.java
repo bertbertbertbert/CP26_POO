@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cinema {
-	
+
 	static Scanner scan = new Scanner(System.in);
 
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		boolean sortir = false;
 		while(!sortir) {
-			
+
 			System.out.println("1.Afegir película.");
 			System.out.println("2.Crear Sessió");
 			System.out.println("3.Vendre Entrades");
@@ -37,12 +37,12 @@ public class Cinema {
 			    float preu_entrada = scan.nextFloat();
 				afegir_pelicula(codi, titol, durada, preu_entrada);
 				break;
-			case 2: 
+			case 2:
 			    System.out.println("Introdueix el codi de la sessió");
 			    int codi_sessio = scan.nextInt();
-			    scan.nextLine();      
+			    scan.nextLine();
 			    System.out.println("Introdueix el nom de la película");
-			    String nomPeli = scan.nextLine(); 			    
+			    String nomPeli = scan.nextLine();
 			    System.out.println("Introdueix la hora de la película (hora)");
 			    int hora = scan.nextInt();
 			    System.out.println("Introdueix els minuts de la película(hora)");
@@ -66,7 +66,7 @@ public class Cinema {
                 int codi_pelicula = scan.nextInt();
                 buscar_sessions(codi_pelicula);
 				break;
-			case 5: 
+			case 5:
 				System.out.println("Introdueix el nom de la sala");
                 int num_sala = scan.nextInt();
 				recaptacio_sala(num_sala);
@@ -77,7 +77,7 @@ public class Cinema {
 			case 7:
 				sessions_amb_entrades();
 				break;
-			case 8: 
+			case 8:
 				sortir=true;
 				System.out.println("Has sortit" + "\n");
 				break;
@@ -88,23 +88,23 @@ public class Cinema {
 		}
 
 	}
-	
+
 	    public static boolean afegir_pelicula(int codi, String titol, int durada, float preu_entrada) {
 		//Retorna True si s'ha afegit, False si el codi ja existeix
 		new Pelicula(codi, titol, durada, preu_entrada);
 		return false;
 	}
-	
+
 	public static boolean crear_sessio(int codi_sessio, String nomPeli, int hora, int min, int sala, int entrades_totals) {
 		//Crea una sessió assignant la pel·lícula corresponent
-		//Retorna False si la pel·lícula no existeix o el codi de sessió ja existeix	
+		//Retorna False si la pel·lícula no existeix o el codi de sessió ja existeix
 		boolean sessioValida = true;
 	    Pelicula p = Validacions.validacioTrobarPeli(nomPeli);
 	    if(p == null) {
 	    	System.out.println("Pelicula no trobada");
 	    sessioValida = false;
 	    }
-	    
+
 	    if(!Validacions.validacioCodiSessioRepetit(codi_sessio)) {
 	    	System.out.println("Codi de Sessió repetit");
 	    	sessioValida = false;
@@ -114,7 +114,7 @@ public class Cinema {
 	    }
 		return sessioValida;
 	}
-	
+
 	public static float vendre_entrades(int codi_sessio, int quantitat) {
 		//Retorna l'import total o -1 si no hi ha prou entrades
 		//Actualitza entrades_disponibles i entrades_venudes
@@ -133,14 +133,14 @@ public class Cinema {
                     retorn = s.entrades_disponibles;
 				 }
 			 }
-			
+
 			return retorn;
 		}else{
 			retorn = -1;
-		}		
+		}
 		return retorn;
 	}
-	
+
 	public static ArrayList<Sessio> buscar_sessions(int codi_pelicula){
 		//Retorna la llista de sessions d'aquella pel·lícula
 		ArrayList <Sessio> sessionsDisponibles = Sessio.sessions;
@@ -151,7 +151,7 @@ public class Cinema {
 		}
 		return sessionsDisponibles;
 	}
-	
+
 	public static float recaptacio_sala(float num_sala) {
 		float recapatacio = 0;
 		for(Sessio s : Sessio.sessions) {
@@ -161,7 +161,7 @@ public class Cinema {
 		}
 		return recapatacio;
 	}
-	
+
 	public static ArrayList<Sessio> sessions_nocturnes(){
 		//Retorna sessions que comencen a partir de les 22:00
 		ArrayList <Sessio> sessionNocturnes = Sessio.sessions;
@@ -172,7 +172,7 @@ public class Cinema {
 		}
 		return sessionNocturnes;
 	}
-    
+
 	public static ArrayList<Sessio> sessions_amb_entrades(){
 		//Retorna sessions que encara tenen entrades disponibles
 		ArrayList <Sessio> sessionsAmbEntrades = Sessio.sessions;
@@ -183,6 +183,6 @@ public class Cinema {
 		}
 		return sessionsAmbEntrades;
 	}
-	
+
 	}
 

@@ -9,7 +9,7 @@ public class Metge extends Persona {
 	private double souInicial;
 	private double sou;
 	private Categoria cat;
-	private ArrayList<Pacient> pacientsAssingnats = new ArrayList<Pacient>();
+	private ArrayList<Pacient> pacientsAssingnats = new ArrayList<>();
 
 	public String getDepartament() {
 		return departament;
@@ -41,7 +41,7 @@ public class Metge extends Persona {
 	}
 
 	public Metge() {
-	};
+	}
 
 	public Metge(String nom, Categoria cat) {
 		super(nom);
@@ -105,10 +105,10 @@ public class Metge extends Persona {
 
 	public boolean consulta(Pacient pac) {
 		double preuFinal = calcularPreuConsulta(pac.getEdat(), pac.getGravetat(), this.cat);
-		if (pac.getDiners() >= preuFinal) {	
+		if (pac.getDiners() >= preuFinal) {
 			pac.setDiners(pac.getDiners() - preuFinal);
 			afegirPacient(pac);
-			System.out.println("Nom pacient " + pac.nom + " Nom Metge " +  this.getNom() + " Preu consulta " + preuFinal + 
+			System.out.println("Nom pacient " + pac.nom + " Nom Metge " +  this.getNom() + " Preu consulta " + preuFinal +
 			" Gravetat pacient " + pac.getGravetat() + " diners pacient " + pac.getDiners());
 			return true;
 		} else {

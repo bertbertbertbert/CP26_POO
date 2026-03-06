@@ -10,8 +10,8 @@ public class PacientHospitalitzat extends Pacient {
 	private Diagnosti diagnosti;
 	private static int nombrePacientsHospitalitzats = 0;
     private Intervencio intervencioAssignada;
-    
-    
+
+
 	public ArrayList<Tractament> getTractamentActual() {
 		return tractamentsActuals;
 	}
@@ -42,11 +42,11 @@ public class PacientHospitalitzat extends Pacient {
 	public Intervencio getIntervencioAssignada() {
 		return this.intervencioAssignada;
 	}
-	
+
 	public void setIntervencioAssignada(Intervencio intA) {
 		this.intervencioAssignada = intA;
 	}
-	
+
 	public PacientHospitalitzat(Pacient p, Diagnosti diagnosti, Tractament tractamentActual) {
 		super(p.getNom(), p.getEdat());
 		this.setGravetat(p.getGravetat());

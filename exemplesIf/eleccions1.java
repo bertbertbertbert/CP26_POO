@@ -8,7 +8,7 @@ public class eleccions1 {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int votsJiden = scan.nextInt();
 		int votsDrump = scan.nextInt();
 		int votsBanders = scan.nextInt();

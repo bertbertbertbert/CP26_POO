@@ -8,10 +8,10 @@ public class caramels {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int caramels = scan.nextInt();
 		int nebots = scan.nextInt();
-		
+
 		System.out.print(caramels%nebots);
 	}
 

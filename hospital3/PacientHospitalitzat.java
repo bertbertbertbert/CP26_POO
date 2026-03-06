@@ -42,6 +42,7 @@ public class PacientHospitalitzat extends Pacient {
 		hospitalitzats.add(this);
 	}
 
+	@Override
 	public void afegirSimptoma(Simptoma s) {
 		super.afegirSimptoma(s);
 		this.diesHospitalitzat++;

@@ -6,10 +6,10 @@ public class termometreKo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Scanner scan = new Scanner(System.in);
 		int casos = scan.nextInt();
-        
+
 		for(int i = 0; i<casos; i++) {
 		int k = scan.nextInt();
 		int[] arr = new int[k];
@@ -25,7 +25,7 @@ public class termometreKo {
 		}
         System.out.println();
 	}
-		
+
 	}
 
 }

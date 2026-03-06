@@ -8,7 +8,7 @@ public class patates2 {
 		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int casos = scan.nextInt();
 		int camions;
 		int patates;

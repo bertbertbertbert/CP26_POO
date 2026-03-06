@@ -17,10 +17,10 @@ public class test {
 		System.out.println(albertoH.getGravetat());
 		Simptoma anginas = new Simptoma("anginas", Gravetat.CRITICA);
 		albertoH.afegirSimptoma(anginas, 0);
-		//creo la cirugia		
+		//creo la cirugia
 		Cirugia cirugiaAlberto = new Cirugia("cirugia Alberto");
 		System.out.println(cirugiaAlberto.getExitosa());
-		
+
 		//asigno y realizo la cirugia
 		cirugiaAlberto.assignar(albertoH);
 		cirugiaAlberto.realitzar(albertoH);

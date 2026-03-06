@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class pedraPaperTisora {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		int eleccioJugador1 = scan.nextInt();
 		int eleccioJugador2 = scan.nextInt();
-		
+
 		if((eleccioJugador1>0 && eleccioJugador1<4)&&(eleccioJugador2>0 && eleccioJugador2<4)) {
 			if(eleccioJugador1 == eleccioJugador2) {
 				System.out.print("EMPAT");
@@ -24,7 +24,7 @@ public class pedraPaperTisora {
 			System.out.print("ERROR");
 		}
 
-		
+
 	}
 
 }
