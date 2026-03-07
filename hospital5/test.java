@@ -14,14 +14,14 @@ public class test {
 		PacientHospitalitzat neusR = new PacientHospitalitzat (neus, Diagnosti.ESGUINC, new Medicament("Ansiolitic", TipusMedicament.ANALGÈSIC));
 		PacientHospitalitzat fernandoN = new PacientHospitalitzat (fernando, Diagnosti.RESTRENYIMENT, new Medicament("Ansiolitic", TipusMedicament.ANTIDIABETIC));
 		
-//		try {	
-//	    Transplament fetge = albertoH.solicitarTrasplantament(marcA, Organs.FETGE);
-//		 System.out.println("Hem trobat donant! Codi de trasplantament " + fetge);
-//		}catch(Exception e){
-//			System.out.println(e.getMessage());
-//		}finally {
-//    		  System.out.println(albertoH.getNom() + " segueix hospitalitzat");
-//      }
+		try {	
+	    Transplament fetge = albertoH.solicitarTrasplantament(marcA, Organs.FETGE);
+		 System.out.println("Hem trobat donant! Codi de trasplantament " + fetge);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally {
+    		  System.out.println(albertoH.getNom() + " segueix hospitalitzat");
+      }
 	}
 
 	private static PacientHospitalitzat pacientHospitalitzatStatic(Pacient p, Diagnosti diagnosti, Tractament tractament) throws PacientJaHospitalitzatException {
