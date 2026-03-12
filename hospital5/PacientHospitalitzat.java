@@ -143,7 +143,7 @@ public class PacientHospitalitzat extends Pacient {
 			      return new Transplament(organ, this, donant);
 			}
 			 throw new DonantNoCompatibleException("El donant no es compatible");
-		 }catch (Exception e) {
+		 }catch (ReceptorNoReuTransplament e) {
 			System.out.println(e.getMessage());
 			throw new DonantNoCompatibleException("El donant no es compatible");
 		}

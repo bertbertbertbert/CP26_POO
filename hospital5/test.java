@@ -12,6 +12,7 @@ public class test implements Comparable {
 		PacientHospitalitzat marcA = new PacientHospitalitzat (marc, Diagnosti.ALERGIA, new Medicament("Ansiolitic", TipusMedicament.ANALGÈSIC));
 		PacientHospitalitzat neusR = new PacientHospitalitzat (neus, Diagnosti.ESGUINC, new Medicament("Ansiolitic", TipusMedicament.ANALGÈSIC));
 		PacientHospitalitzat fernandoN = new PacientHospitalitzat (fernando, Diagnosti.RESTRENYIMENT, new Medicament("Ansiolitic", TipusMedicament.ANTIDIABETIC));
+<<<<<<< HEAD
 		Metge house = new Metge();
 
 		house.afegirPacient(alberto);
@@ -20,6 +21,17 @@ public class test implements Comparable {
 		house.afegirPacient(fernando);
 		house.veurePacients();
 
+=======
+		
+		try {	
+	    Transplament fetge = albertoH.solicitarTrasplantament(marcA, Organs.FETGE);
+		 System.out.println("Hem trobat donant! Codi de trasplantament " + fetge);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}finally {
+    		  System.out.println(albertoH.getNom() + " segueix hospitalitzat");
+      }
+>>>>>>> fca12f136b6fecd8fa9bf07a6e56a4755c8eebc0
 	}
 
 	private static PacientHospitalitzat pacientHospitalitzatStatic(Pacient p, Diagnosti diagnosti, Tractament tractament) throws PacientJaHospitalitzatException {
