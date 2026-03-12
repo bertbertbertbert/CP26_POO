@@ -73,6 +73,7 @@ public class PacientHospitalitzat extends Pacient {
 		this.diesHospitalitzat = diesHospital;
 	}
 
+	
 	public static void veureHopsitalitzats() {
 		for (PacientHospitalitzat pacient : hospitalitzats) {
 			System.out.println("nom " + pacient.getNom() + " edad " + pacient.getEdat());
@@ -148,12 +149,13 @@ public class PacientHospitalitzat extends Pacient {
 		}
 	 }
 
-	@Override
+	
 	public String toString() {
 		return "Pacient [nom=" + this.getNom() +
 				", diners=" + this.getDiners() +
 				", edat=" + this.getEdat() +
 				", gravetat=" + this.getGravetat() +
+				", sexe=" + this.getSexe() +
 				", planta=" + this.getPlanta() +
 				", dies hopsitalitzat =" + this.getDiesHospitalitzat() + "]";
 	}

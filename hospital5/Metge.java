@@ -10,6 +10,7 @@ public class Metge extends Persona {
 	private double sou;
 	private Categoria cat;
 	private ArrayList<Pacient> pacientsAssingnats = new ArrayList<>();
+	private ArrayList<Pacient> pacientsAssingnats2;
 
 	public String getDepartament() {
 		return departament;
@@ -86,7 +87,24 @@ public class Metge extends Persona {
 	}
 
 	public void afegirPacient(Pacient pac) {
-		pacientsAssingnats.add(pac);
+        if(pacientsAssingnats.size() == 0) {
+        	pacientsAssingnats.add(pac);
+        	return;
+        }else {
+        	for(int i = 0; i < pacientsAssingnats.size(); i++) {
+        		if(pac.compareTo(pacientsAssingnats.get(i)) > 0) {
+        			if(i == 0){
+        			pacientsAssingnats.add(0, pac);
+        		}else {
+        			pacientsAssingnats.add(i-1, pac);
+        		}
+        	}else {
+        		pacientsAssingnats.add(pac);
+        		}
+        	}
+        }
+        
+		
 	}
 
 	public static double calcularPreuConsulta(int edat, Gravetat gravetat, Categoria categoria) {
@@ -132,4 +150,11 @@ public class Metge extends Persona {
 				"]";
 	}
 
+	public void ordenarPacients() {
+		ArrayList<Pacient> pacientsAssingnats2 = new ArrayList<>();
+		for(int i = 0; i < pacientsAssingnats.size(); i++) {
+			pacientsAssingnats.get(i).compareTo(pacientsAssingnats);
+		}
+	}
+	
 }

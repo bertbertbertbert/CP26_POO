@@ -2,9 +2,10 @@ package hospital5;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 
-public class Pacient extends Persona {
+public class Pacient extends Persona implements Comparable {
 
 	private double diners;
 	private int edat;
@@ -146,7 +147,27 @@ public class Pacient extends Persona {
 
 		}
 	}
+	
+	
 
+
+		@Override
+	public int hashCode() {
+		return Objects.hash(edat, gravetat, mapaOrgans, sexe, simptomes);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pacient other = (Pacient) obj;
+		return edat == other.edat && gravetat == other.gravetat && Objects.equals(mapaOrgans, other.mapaOrgans)
+				&& sexe == other.sexe && Objects.equals(simptomes, other.simptomes);
+	}
 
 		@Override
 	public String toString() {
@@ -158,4 +179,19 @@ public class Pacient extends Persona {
 				", planta=" + this.getPlanta() + "]";
 	}
 
+		@Override
+		public int compareTo(Object arg0) {
+			// astejo l'altre objecte a Pacient
+			Pacient altre = (Pacient) arg0;
+			// comparo per edat. si l'altre té més edat, soc més petit
+			if (altre.edat > this.edat) {
+				return -1;
+			} else if (this.edat > altre.edat) {
+				return 1;
+			} // si tenen la mateixa edat comparem per nom
+			else {// com que nom és una string i string té el seu propi compareTo, el podem fer servir
+				return this.getNom().compareTo(altre.getNom());
+		}
+
+    }
 }
