@@ -86,26 +86,30 @@ public class Metge extends Persona {
         actualitzarSou();
 	}
 
-	public void afegirPacient(Pacient pac) {
-        if(pacientsAssingnats.size() == 0) {
-        	pacientsAssingnats.add(pac);
-        	return;
-        }else {
-        	for(int i = 0; i < pacientsAssingnats.size(); i++) {
-        		if(pac.compareTo(pacientsAssingnats.get(i)) > 0) {
-        			if(i == 0){
-        			pacientsAssingnats.add(0, pac);
-        		}else {
-        			pacientsAssingnats.add(i-1, pac);
-        		}
-        	}else {
-        		pacientsAssingnats.add(pac);
-        		}
-        	}
+public void afegirPacient(Pacient pac) {
+        boolean mesPetit=true;
+        if (pacientsAssingnats.isEmpty()) {
+            pacientsAssingnats.add(pac);
+        } else {
+            for (int i = 0; i < pacientsAssingnats.size(); i++) {
+				  mesPetit = true;
+                if (pac.compareTo(pacientsAssingnats.get(i)) > 0) {
+                    mesPetit = false;
+                    if (i == 0) {
+                        pacientsAssingnats.add(0, pac);
+                        return;
+                    } else if (i > 0) {
+                        pacientsAssingnats.add(i, pac);
+                        return;
+                    }
+                }
+            }
+            if (mesPetit) {
+                  pacientsAssingnats.add(pac);
+            }
         }
-        
-		
-	}
+
+    }
 
 	public static double calcularPreuConsulta(int edat, Gravetat gravetat, Categoria categoria) {
 		double preuBase = 10;
